@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { v4: uuidv4 } = require("uuid");
 const secretKey = uuidv4();
-
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -18,7 +17,7 @@ exports.login = async (req, res, next) => {
       return res.status(401).json({ message: 'Invalid password' });
     }
 
-    const token = jwt.sign({ user_id: user.user_id, role_id: user.role_id }, secretKey);
+    const token = jwt.sign({ user_id: user.user_id, role_id: user.role_id }, 'f785be2c-ba03-411e-87c6-f2669d53393d');
     res.json({ token });
   } catch (error) {
     next(error);
