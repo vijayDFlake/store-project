@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require("uuid");
-const secretKey = uuidv4();
-console.log(`Secret Key is ${secretKey}`);
+
 exports.verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
